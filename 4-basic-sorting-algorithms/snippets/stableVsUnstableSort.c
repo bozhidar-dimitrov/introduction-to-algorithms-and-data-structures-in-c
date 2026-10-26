@@ -21,17 +21,17 @@ int isGreater(Student a, Student b, int field) {
 
 int main(void) {
 
-    // Редът в началото е по номер в клас. Ученици с равен успех: Ivan/Georgi/Dimitar (5.50) и Maria/Elena/Stefan (4.00).
+    // Редът в началото е по номер в клас. Ученици с равен успех: Ivan/Elena/Anna/Nikolay (4.00), Maria/Dimitar (5.00) и Georgi/Petar/Stefan (6.00).
     Student original[10] = {
-        {1, "Ivan", 5.50},
-        {2, "Maria", 4.00},
-        {3, "Georgi", 5.50},
+        {1, "Ivan", 4.00},
+        {2, "Maria", 5.00},
+        {3, "Georgi", 6.00},
         {4, "Elena", 4.00},
         {5, "Petar", 6.00},
-        {6, "Dimitar", 5.50},
-        {7, "Anna", 3.00},
-        {8, "Stefan", 4.00},
-        {9, "Nikolay", 6.00},
+        {6, "Dimitar", 5.00},
+        {7, "Anna", 4.00},
+        {8, "Stefan", 6.00},
+        {9, "Nikolay", 4.00},
         {10, "Viktoria", 3.00}
     };
     Student students[10];
@@ -59,6 +59,7 @@ int main(void) {
         printf("3. Sort by class number\n");
         printf("4. Sort by name\n");
         printf("5. Sort by average grade\n");
+        printf("6. Reset to original order\n");
         printf("0. Exit\n");
         printf("Your choice: ");
 
@@ -95,10 +96,7 @@ int main(void) {
             // 3 -> номер, 4 -> име, 5 -> успех
             int field = choice - 2;
 
-            // Всяко сортиране започва от оригиналния ред, за да е демонстрацията повтаряема
-            for (int i = 0; i < count; i++) {
-                students[i] = original[i];
-            }
+            // Сортира текущия ред (не оригинала), за да се вижда дали предишното сортиране се запазва
 
             if (method == 1) {
                 // Selection sort: разменя най-малкия с първия от неподредената част,
@@ -141,6 +139,11 @@ int main(void) {
             }
 
             printf("Sorted. Choose option 1 to see the table.\n");
+        } else if (choice == 6) {
+            for (int i = 0; i < count; i++) {
+                students[i] = original[i];
+            }
+            printf("Order reset to the original (by class number).\n");
         } else {
             printf("Invalid choice.\n");
         }
