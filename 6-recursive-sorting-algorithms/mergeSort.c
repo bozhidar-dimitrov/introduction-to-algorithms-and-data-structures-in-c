@@ -2,8 +2,8 @@
 void merge(int arr[],int left, int mid, int right, int target[]){
     int i = left;
     int j = mid + 1;
-    int k=0;
-    while(i<=mid && j<=right){
+    int k=left;
+    while(i<=mid && j<=right) {
         if(arr[i]<arr[j]){
             target[k++]=arr[i++];
             
@@ -18,7 +18,7 @@ void merge(int arr[],int left, int mid, int right, int target[]){
         target[k++]=arr[j++];
     }
 
-    for(int l=0;l<=right;l++){
+    for(int l=left;l<=right;l++){
         arr[l]=target[l];
     }
 }
@@ -43,6 +43,7 @@ int main(void) {
   int left = 0;
   int right = n - 1;
 
+  //merge sort is a stable sorting algorithm
   mergeSort(arr1, target, left, right);
 
   for (int i = 0; i < n; i++) {
